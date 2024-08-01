@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="left">
+      <h2>IM SHARE MY BAG</h2>
+      <div class="illustration">
+        <fa-icon [icon]="['fas', 'bag-shopping']"></fa-icon>
+      </div>
+    </div>
+    <div class="right">
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <h2>Iniciar sesión</h2>
+        <label for="email">Correo electrónico</label>
+        <input id="email" type="email" placeholder="Correo electrónico" [(ngModel)]="email" name="emailInput" required>
+        <label for="password">Clave</label>
+        <input id="password" type="password" placeholder="Clave" [(ngModel)]="password" name="passwordInput" required>
+        <button type="submit">Ingresar</button>
+        <div class="social-login">
+          <button class="facebook"><fa-icon [icon]="['fab', 'facebook-f']"></fa-icon> Continuar con Facebook</button>
+          <button class="google"><fa-icon [icon]="['fab', 'google']"></fa-icon> Continuar con Google</button>
+        </div>
+        <div class="links">
+          <a href="#">Regístrate</a>
+          <a href="#">¿Olvidaste tu clave?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
