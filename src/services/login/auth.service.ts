@@ -21,6 +21,8 @@ export class AuthService {
   login(email: string, password: string): boolean {
     const user = this.users.find(u => u.email === email && u.password === password);
     if (user) {
+      sessionStorage.setItem('userId', user.id.toString());
+      sessionStorage.setItem('userEmail', user.email);
       this.router.navigate(['/home']);
       return true;
     } else {
