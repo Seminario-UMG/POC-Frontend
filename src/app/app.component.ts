@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { SidebarService } from '../services/sidebar/sidebar.service';
 
 // ngprime
 import { ButtonModule } from 'primeng/button';
@@ -19,12 +22,32 @@ import { AvatarModule } from 'primeng/avatar';
 })
 export class AppComponent {
   title = 'TravelCourier';
+  titleComponent:string = 'Inicio';
 
   sidebarVisible:boolean = false;
+  touchStartX:number = 0;
+  touchEndX:number = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sidebarService:SidebarService, private location: Location) {}
 
-  isLoginRoute(): boolean {
+  ngOnInit(): void {
+    this.sidebarService.sidebarLabel$.subscribe(label => {
+      this.titleComponent = label;
+    });
+  }
+
+  onSwipe(event: any):void {
+    switch (event.direction) {
+      case Hammer.DIRECTION_LEFT:
+        console.log("left");
+        break;
+      case Hammer.DIRECTION_RIGHT:
+        console.log("right");
+        break;
+    }
+  }
+
+  isNotRouteApp(): boolean {
     return this.router.url === '/login';
   }
 
@@ -38,6 +61,10 @@ export class AppComponent {
       sessionStorage.removeItem('userEmail');
     }
     this.router.navigate(['/login']);
+  }
+
+  goBack(): void {
+    this.location.back(); // Navega a la página anterior en el historial del navegador
   }
 
 }

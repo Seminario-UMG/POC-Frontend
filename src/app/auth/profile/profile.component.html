@@ -1,0 +1,7 @@
+<!-- mi-perfil.component.html -->
+<div class="col flex flex-column align-items-center mt-5">
+    <p-button label="Mis datos" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('auth/user-profile')"></p-button>
+    <p-button label="Cambiar clave" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('auth/reset-password')"></p-button>
+    <p-confirmDialog></p-confirmDialog>
+    <p-button label="Cerrar sesión" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="confirm1($event)"></p-button>
+</div>

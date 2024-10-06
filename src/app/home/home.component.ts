@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { SidebarService } from '../../services/sidebar/sidebar.service';
+
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 
@@ -13,8 +15,11 @@ import { ButtonModule } from 'primeng/button';
 })
 export class HomeComponent {
 
-  constructor(private router: Router) {
+  title:string = "Inicio";
+
+  constructor(private router: Router, private sidebarService:SidebarService) {
     this.checkSession();
+    this.sidebarService.setSidebarLabel(this.title);
   }
 
   checkSession(): void {
@@ -29,4 +34,9 @@ export class HomeComponent {
       this.router.navigate(['/login']);
     }
   }
+
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
+  }
+
 }

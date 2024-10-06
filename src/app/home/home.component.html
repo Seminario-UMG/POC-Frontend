@@ -1,7 +1,7 @@
-<div class="flex flex-column align-items-center mt-5">
-    <p-button label="Mi perfil" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded"></p-button>
-    <p-button label="Comprador en línea" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded"></p-button>
-    <p-button label="Viajero" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded"></p-button>
+<div class="col flex flex-column align-items-center mt-5">
+    <p-button label="Mi perfil" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('auth/profile')"></p-button>
+    <p-button label="Comprador en línea" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('shopping/buyer/online-buyer')"></p-button>
+    <p-button label="Viajero" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('delivery/traveler')"></p-button>
     <p-button label="Cotizador" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded"></p-button>
-    <p-button label="Historial" styleClass="p-button-outlined p-button-lg p-button-rounded"></p-button>
+    <p-button label="Historial" class="mb-3" styleClass="p-button-outlined p-button-lg p-button-rounded" (onClick)="navigateTo('shopping/history/history')"></p-button>
 </div>
