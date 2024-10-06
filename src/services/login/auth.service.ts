@@ -1,32 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private users = [
-    {
-      id: 1,
-      username: 'testuser',
-      password: 'password123', // Recuerda no usar contraseñas en texto plano en aplicaciones reales.
-      email: 'testuser@example.com',
-      name: 'John Doe',
-      created_at: '2024-07-31 12:34:56'
-    }
-  ];
 
-  constructor(private router: Router) { }
+  private apiUrl = 'http://149.50.144.143:3001/api/authentications'; 
 
-  login(email: string, password: string): boolean {
-    const user = this.users.find(u => u.email === email && u.password === password);
-    if (user) {
-      sessionStorage.setItem('userId', user.id.toString());
-      sessionStorage.setItem('userEmail', user.email);
-      this.router.navigate(['/home']);
-      return true;
-    } else {
-      return false;
-    }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  login(user: string, password: string): Observable<any> {
+    const body = { user, password };
+    return this.http.post(this.apiUrl, body);  // Realiza la solicitud POST al microservicio
   }
 }

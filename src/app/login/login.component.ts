@@ -7,11 +7,12 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faGoogle, faFacebookF, faApple } from '@fortawesome/free-brands-svg-icons';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common'; // Para usar directivas comunes de Angular
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterModule, FontAwesomeModule, CommonModule], // Importar FormsModule y FontAwesomeModule
+  imports: [FormsModule, RouterModule, FontAwesomeModule, CommonModule, HttpClientModule], // Importar FormsModule y FontAwesomeModule
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -25,11 +26,18 @@ export class LoginComponent {
   }
 
   onLogin(): void {
-    if (this.authService.login(this.email, this.password)) {
-      console.log("Redirección exitosa");
-    } else {
-      alert('Credenciales incorrectas');
-    }
+    this.authService.login(this.email, this.password).subscribe(
+      response => {
+        // Suponiendo que el login es exitoso y recibes un token o userId
+        sessionStorage.setItem('userId', response.userId);
+        sessionStorage.setItem('userEmail', this.email);
+        this.router.navigate(['/home']);
+      },
+      error => {
+        alert('Credenciales incorrectas');
+        console.error('Error en la autenticación', error);
+      }
+    );
   }
 
   checkSession(): void {
@@ -44,5 +52,4 @@ export class LoginComponent {
       this.router.navigate(['/login']);
     }
   }
-
 }
