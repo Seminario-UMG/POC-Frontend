@@ -51,6 +51,10 @@ export class AppComponent {
     return this.router.url === '/login';
   }
 
+  isRouteHome(): boolean {
+    return this.router.url === '/home';
+  }
+
   closeCallback(event: any): void {
     this.sidebarVisible = false;
   }

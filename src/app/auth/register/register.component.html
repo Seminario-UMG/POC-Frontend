@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="col flex flex-column align-items-center mt-5">
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div class="p-field flex flex-column mb-4">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="user.userName" placeholder="Escribe tu nombre completo" required class="p-inputtext p-component">
+        </div>
+        <div class="p-field flex flex-column mb-4">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" [(ngModel)]="user.userEmail" placeholder="Escribe tu correo electrónico" required class="p-inputtext p-component">
+        </div>
+        <div class="p-field flex flex-column mb-4">
+            <label for="clave">Clave</label>
+            <p-password inputId="clave" name="clave" [(ngModel)]="user.userPassword" placeholder="Escribe tu clave" required></p-password>
+        </div>
+        <div class="p-field flex flex-column mb-4">
+            <label for="confirmarClave">Confirmar clave</label>
+            <p-password inputId="confirmarClave" name="confirmarClave" [(ngModel)]="user.confirmUserPassword" placeholder="Confirma tu clave" required></p-password>
+        </div>
+        <div class="p-field-checkbox mb-4">
+            <p-checkbox inputId="terminos" name="terminos" [(ngModel)]="user.terminos" [binary]="true" class="mr-1" required></p-checkbox>
+            <label for="terminos">Acepto los Términos y Condiciones</label>
+        </div>
+        <div class="p-field-checkbox mb-4">
+            <p-checkbox inputId="privacidad" name="privacidad" [(ngModel)]="user.privacidad" [binary]="true" class="mr-1" required></p-checkbox>
+            <label for="privacidad">Acepto las Políticas de Privacidad</label>
+        </div>
+        <p-button label="Regístrate" class="p-button-rounded p-button-success mt-3" [disabled]="!registerForm.valid" type="submit"></p-button>
+    </form>
+</div>

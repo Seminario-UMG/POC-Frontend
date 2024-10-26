@@ -1,0 +1,16 @@
+<div class="col flex flex-column align-items-center mt-5">
+    <form (ngSubmit)="cotizar()" class="w-100 flex flex-column align-items-center">
+        <div *ngFor="let viajero of viajeros" class="p-mb-3">
+            <p-checkbox [inputId]="viajero.nombre" [(ngModel)]="viajero.selected" [ngModelOptions]="{standalone: true}"
+                (onChange)="onCheckboxChange(viajero)" [binary]="true">
+                <ng-template pTemplate="label">
+                    {{ viajero.nombre }} - {{ viajero.estado }} - {{ viajero.ciudad }}
+                </ng-template>
+            </p-checkbox>
+            <p>Desde cuando recibe: {{ viajero.desde }}<br>
+                Hasta cuando recibe: {{ viajero.hasta }}<br>
+                Llega a Guatemala: {{ viajero.llega }}</p>
+        </div>
+        <button type="submit" pButton label="Cotizar" icon="pi pi-check" class="p-button-primary"></button>
+    </form>
+</div>

@@ -42,3 +42,14 @@ p-password>div>input {
 p-button>button {
     min-width: 100%;
 }
+
+div.p-toolbar.p-component{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* .col.flex.flex-column.align-items-center.mt-5 {
+    justify-self: center;
+    width: 33%;
+} */

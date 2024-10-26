@@ -1,0 +1,16 @@
+/* styles.css o styles.scss */
+.custom-modal {
+    border-radius: 20px;  /* Cambia el valor según necesites */
+    overflow: hidden;     /* Asegúrate de que los bordes se apliquen correctamente */
+}
+
+/* styles.css o styles.scss */
+.custom-button {
+    background-color: #007bff; /* Cambia el color según necesites */
+    color: white;              /* Color del texto */
+    border: none;              /* Opcional: elimina el borde */
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+}

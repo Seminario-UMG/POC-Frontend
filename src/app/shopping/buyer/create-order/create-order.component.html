@@ -1,0 +1,82 @@
+<div class="col flex flex-column align-items-center mt-5">
+    <form>
+<!-- aqui empieza primer producto -->
+        <div class="p-field flex flex-column mb-4">
+            <label for="nombre">Nombre del Producto</label>
+            <input type="text" id="nombre" name="nombre" required class="p-inputtext p-component">
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="enlace">Enlace</label>
+            <div class="p-inputgroup">
+                <input type="url" id="enlace" name="enlace" required class="p-inputtext p-component">
+                <i class="pi pi-question-circle p-inputgroup-addon" pTooltip="Coloca el enlace de la página donde realizaste la cotización de tu producto." tooltipPosition="left"></i>
+            </div>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="categoria">Categoría</label>
+            <p-dropdown id="categoria" name="categoria" [options]="categorias" placeholder="Selecciona una categoría" required></p-dropdown>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" id="cantidad" name="cantidad" required class="p-inputtext p-component">
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="valor-unitario">Valor Unitario ($)</label>
+            <div class="p-inputgroup">
+                <input type="number" id="valor-unitario" name="valor-unitario" required class="p-inputtext p-component">
+                <i class="pi pi-question-circle p-inputgroup-addon" pTooltip="Este valor es únicamente del producto, no incluir envío ni impuestos." tooltipPosition="left"></i>
+            </div>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="incluir-caja">¿Incluir Caja?</label>
+            <p-dropdown id="incluir-caja" name="incluir-caja" [options]="incluyeCajaOptions" placeholder="Selecciona una opción" required></p-dropdown>
+
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label>Medidas (Centímetros)</label>
+            <div class="p-grid">
+                <div class="p-col flex gap-3 dimensions">
+                    <input type="number" placeholder="Largo" name="largo" required class="p-inputtext p-component">
+                    <input type="number" placeholder="Alto" name="alto" required class="p-inputtext p-component">
+                    <input type="number" placeholder="Ancho" name="ancho" required class="p-inputtext p-component">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <label for="peso">Peso (Libras)</label>
+            <input type="number" id="peso" name="peso" required class="p-inputtext p-component">
+        </div>
+<!-- aqui termina primer producto -->
+        <div class="p-field flex flex-column mb-4">
+            <button type="button" class="p-button p-button-secondary">Agregar otro producto</button>
+        </div>
+<!-- datos de entrega -->
+        <div class="p-field flex flex-column mb-4">
+            <div class="p-field-radiobutton mb-4">
+                <h3 class="p-mt-3">Datos de Entrega</h3>
+            </div>
+            <div class="p-field-radiobutton mb-4">
+                <p-radioButton name="entrega" value="bodega" [(ngModel)]="entrega" inputId="bodega" label="Recoger en bodega (Gratis)"></p-radioButton>
+            </div>
+            <div class="p-field-radiobutton mb-4">
+                <p-radioButton name="entrega" value="domicilio" [(ngModel)]="entrega" inputId="domicilio" label="Envío a domicilio (Cargo adicional)"></p-radioButton>
+            </div>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <textarea placeholder="Comentario" rows="4" cols="30" class="p-inputtext p-component"></textarea>
+        </div>
+
+        <div class="p-field flex flex-column mb-4">
+            <p-button label="Elegir Viajeros" icon="pi pi-check" styleClass="p-button-success" type="submit" class="mt-3" (onClick)="navigateTo('shopping/buyer/traveler-selector')"></p-button>
+        </div>
+<!-- fin datos de entrega -->
+    </form>
+</div>

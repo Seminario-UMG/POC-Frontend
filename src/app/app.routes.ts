@@ -10,6 +10,9 @@ import { OnlineBuyerComponent } from './shopping/buyer/online-buyer/online-buyer
 import { HistoryComponent } from './shopping/history/history/history.component';
 import { TravelerComponent } from './delivery/traveler/traveler.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { QuoteRequestComponent } from './shopping/buyer/quote-request/quote-request.component';
+import { CreateOrderComponent } from './shopping/buyer/create-order/create-order.component';
+import { TravelerSelectorComponent } from './shopping/buyer/traveler-selector/traveler-selector.component';
 
 
 export const routes: Routes = [
@@ -22,7 +25,10 @@ export const routes: Routes = [
   { path: 'shopping/buyer/online-buyer', component: OnlineBuyerComponent },
   { path: 'shopping/history/history', component: HistoryComponent },
   { path: 'delivery/traveler', component: TravelerComponent },
-  { path: 'auth/reset-password', component: ResetPasswordComponent }
+  { path: 'auth/reset-password', component: ResetPasswordComponent },
+  { path: 'shopping/buyer/quote-request', component: QuoteRequestComponent },
+  { path: 'shooping/buyer/create-order', component: CreateOrderComponent },
+  { path: 'shopping/buyer/traveler-selector', component: TravelerSelectorComponent }
 ];
 
 export const appRoutingProviders = [provideRouter(routes)];
